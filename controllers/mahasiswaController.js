@@ -96,11 +96,38 @@ const createSeminar = async (req, res) => {
   }
 };
 
+// Update Tugas Akhir status
+const updateStatusPengajuan = async (req, res) => {
+  const { id } = req.params;
+  const { status } = req.body;
+
+  // Validasi status
+  const validStatuses = ["menunggu", "tolak", "setuju"];
+  if (!validStatuses.includes(status)) {
+    return res.status(400).json({ message: "Invalid status" });
+  }
+
+  try {
+    const tugasAkhir = await TugasAkhir.findByPk(id);
+    if (!tugasAkhir) {
+      return res.status(404).json({ message: "Tugas Akhir not found" });
+    }
+
+    tugasAkhir.status = status;
+    await tugasAkhir.save();
+
+    res.status(200).json({ message: "Status updated successfully", tugasAkhir });
+  } catch (error) {
+    console.error("Error updating status:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
 
 // Export all controller functions
 module.exports = {
   lihatMahasiswa,
   lihatDetail,
   lihatPengajuan,
-  createSeminar
+  createSeminar,
+  updateStatusPengajuan
 };

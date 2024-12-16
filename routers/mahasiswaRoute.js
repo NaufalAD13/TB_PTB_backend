@@ -12,4 +12,6 @@ router.get('/namaMahasiswa/:id_mahasiswa', mahasiswaController.lihatDetail);
 router.get('/namaMahasiswa/:id_mahasiswa/pengajuan', mahasiswaController.lihatPengajuan);
 router.post('/seminar', upload.single('surat'), mahasiswaController.createSeminar)
 
+router.put("/pengajuan/:id/status", mahasiswaController.updateStatusPengajuan);
+
 module.exports = router;

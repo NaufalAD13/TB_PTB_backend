@@ -27,6 +27,14 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         unique: true,
       },
+      jenis_kelamin: {
+        type: DataTypes.ENUM('Laki-Laki', 'Perempuan'), // Gender options
+        allowNull: false,
+      },
+      foto: {
+        type: DataTypes.STRING, // Assuming this is a URL or file path to the image
+        allowNull: true, // Optional field
+      },
     },
     {
       sequelize,
