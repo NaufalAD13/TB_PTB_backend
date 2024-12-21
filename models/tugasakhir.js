@@ -49,7 +49,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: 'TugasAkhir',
-      tableName: 'tugasakhirs', // Nama tabel (default plural)
+      tableName: 'TugasAkhirs', // Nama tabel (default plural)
       timestamps: false, // Hilangkan timestamps jika tidak diperlukan
     }
   );

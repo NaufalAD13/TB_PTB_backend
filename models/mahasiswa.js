@@ -39,7 +39,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: 'Mahasiswa',
-      tableName: 'mahasiswas', // Use pluralized form for table names
+      tableName: 'Mahasiswas', // Use pluralized form for table names
       timestamps: false, // Disable timestamps if not required
     }
   );
