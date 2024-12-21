@@ -6,7 +6,9 @@ const { Seminar }  = require("../models")
 const lihatMahasiswa = async (req, res) => {
   try {
     const mahasiswaList = await Mahasiswa.findAll();
-    res.json(mahasiswaList);
+    res.json({
+      data: mahasiswaList,
+    });
   } catch (error) {
     console.error("Error fetching Mahasiswa:", error);
     res.status(500).json({ message: "Internal server error" });
@@ -23,7 +25,9 @@ const lihatDetail = async (req, res) => {
       return res.status(404).json({ message: `Mahasiswa with ID ${id_mahasiswa} not found.` });
     }
 
-    res.json(mahasiswaDetail);
+    res.json({
+      data: mahasiswaDetail
+    });
   } catch (error) {
     console.error("Error fetching Mahasiswa detail:", error);
     res.status(500).json({ message: "Internal server error" });
@@ -45,7 +49,9 @@ const lihatPengajuan = async (req, res) => {
       return res.status(404).json({ message: `Pengajuan not found for Mahasiswa ID: ${id_mahasiswa}` });
     }
 
-    res.json(pengajuan);
+    res.json({
+      data: pengajuan
+    });
   } catch (error) {
     console.error("Error fetching pengajuan data:", error);
     res.status(500).json({ message: "Internal server error" });
