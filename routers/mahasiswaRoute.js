@@ -6,6 +6,7 @@ const {authenticateToken} = require("../middleware/authToken");
 
 // Existing routes
 router.get('/namaMahasiswa', authenticateToken, mahasiswaController.lihatMahasiswa);
+router.get('/namaMahasiswa/status', authenticateToken, mahasiswaController.lihatMahasiswaMenunggu);
 router.get('/namaMahasiswa/:id_mahasiswa', authenticateToken, mahasiswaController.lihatDetail);
 
 

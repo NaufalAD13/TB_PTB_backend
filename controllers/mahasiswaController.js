@@ -15,6 +15,27 @@ const lihatMahasiswa = async (req, res) => {
   }
 };
 
+//Get Mahasiswa Status Menunggu
+const lihatMahasiswaMenunggu = async (req, res) => {
+  try {
+    const mahasiswaList = await Mahasiswa.findAll({
+      include: [
+        {
+          model: TugasAkhir,
+          as: 'tugas_akhirs',
+          where: { status: "menunggu" }, // Filter berdasarkan status di TugasAkhir
+        },
+      ],
+    });
+    res.json({
+      data: mahasiswaList,
+    });
+  } catch (error) {
+    console.error("Error fetching Mahasiswa:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
+
 // Get Mahasiswa details by ID
 const lihatDetail = async (req, res) => {
   try {
@@ -141,6 +162,7 @@ const updateStatusPengajuan = async (req, res) => {
 // Export all controller functions
 module.exports = {
   lihatMahasiswa,
+  lihatMahasiswaMenunggu,
   lihatDetail,
   lihatPengajuan,
   createSeminar,
