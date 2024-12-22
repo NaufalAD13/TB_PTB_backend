@@ -91,6 +91,15 @@ const createSeminar = async (req, res) => {
       surat,
     });
 
+    const statusTugasAkhir = "setuju"
+
+    await TugasAkhir.update(
+        { status: statusTugasAkhir },
+        {
+          where: {id_tugas_akhir: id_tugas_akhir},
+        }
+    )
+
     // Kirim respon sukses
     res.status(201).json({
       message: 'Seminar berhasil dibuat',
