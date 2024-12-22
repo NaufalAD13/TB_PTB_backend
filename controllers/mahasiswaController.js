@@ -41,7 +41,7 @@ const lihatPengajuan = async (req, res) => {
   try {
     const pengajuan = await TugasAkhir.findOne({
       where: { id_mahasiswa },
-      attributes: ["nama_pembimbing", "judul"],
+      attributes: ["nama_pembimbing", "judul", "id_tugas_akhir"],
       include: [{model:Mahasiswa,as :"mahasiswa"}] // Select only nama_pembimbing and judul
     });
 
